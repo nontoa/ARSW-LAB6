@@ -36,7 +36,6 @@ Para correrlo usar
 > POST
 > GET
 > DELETE
-NOTA: El servicio debe estar corriendo para ejecutar el programa
 
 * curl -i -X POST -HContent-Type:application/json -HAccept:application/json http://URL_del_recurso -d '{ObjetoJSON}'
 
