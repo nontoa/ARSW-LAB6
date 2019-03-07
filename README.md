@@ -25,7 +25,10 @@ Despues de clonar el archivo para correrlo con:
 
 * [Maven](https://maven.apache.org/) - Gestión de dependencias
 
-
+## Como correrlo
+Para correrlo usar 
+* mvn clean compile
+* mvn spring-boot:run --> Le va a permitir correr el servicio de spring
 ## Autores
 
 * **Andres Giovanne Florez Perez**  ARSW-LAB6 - [andresflorezp](https://github.com/andresflorezp)
