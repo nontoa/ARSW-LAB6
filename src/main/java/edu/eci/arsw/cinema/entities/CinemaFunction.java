@@ -14,7 +14,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**
- * @author cristian
+ * @author Andres Florez
  */
 
 public class CinemaFunction {

@@ -6,7 +6,7 @@ package edu.eci.arsw.cinema.repository;
  * and open the template in the editor.
  */
 /**
- * @author cristian
+ * @author Andres Florez
  */
 public class CinemaPersistenceException extends Exception {
 

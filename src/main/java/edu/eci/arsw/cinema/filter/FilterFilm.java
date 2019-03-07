@@ -1,4 +1,4 @@
-package edu.eci.arsw.filter;
+package edu.eci.arsw.cinema.filter;
 
 import java.util.*;
 

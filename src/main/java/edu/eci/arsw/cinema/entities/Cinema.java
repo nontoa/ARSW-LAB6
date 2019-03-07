@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 
 /**
- * @author cristian
+ * @author Andres Florez
  */
 
 public class Cinema {
@@ -47,4 +47,9 @@ public class Cinema {
     public void setSchedule(List<CinemaFunction> functions) {
         this.functions = functions;
     }
+
+	public void setFunctions(List<CinemaFunction> functions) {
+		this.functions = functions;
+	}
+    
 }

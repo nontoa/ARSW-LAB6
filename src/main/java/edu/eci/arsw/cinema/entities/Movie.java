@@ -3,7 +3,7 @@ package edu.eci.arsw.cinema.entities;
 import org.springframework.stereotype.Service;
 
 /**
- * @author cristian
+ * @author Andres Florez
  */
 
 public class Movie {

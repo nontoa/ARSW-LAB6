@@ -9,7 +9,7 @@ import java.util.List;
 
 import edu.eci.arsw.cinema.entities.*;
 /**
- * @author cristian
+ * @author Andres Florez
  */
 
 public interface CinemaPersitence {
@@ -44,5 +44,7 @@ public interface CinemaPersitence {
      * @throws CinemaPersistenceException if there is no such cinema
      */
     public Cinema getCinema(String name) throws CinemaPersistenceException;
+    public void addFunctionInCinema(String name,CinemaFunction cinemaF) throws CinemaPersistenceException;
+    public void updateCinemaByNameYDate(String name,CinemaFunction cinemaF) throws CinemaPersistenceException;
 
 }

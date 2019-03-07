@@ -1,11 +1,10 @@
-package edu.eci.arsw.services;
+package edu.eci.arsw.cinema.services;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -16,23 +15,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import edu.eci.arsw.cinema.repository.*;
-import edu.eci.arsw.filter.FilterFilm;
 import edu.eci.arsw.cinema.entities.*;
+import edu.eci.arsw.cinema.filter.FilterFilm;
 import edu.eci.arsw.cinema.controllers.*;
 
 /**
- * @author cristian
+ * @author Andres Florez
  */
 @Service
 public class CinemaServices {
-
-	@Autowired
-	@Qualifier("Bean1")
-	public static CinemaPersitence cps =null;
 	
+	@Qualifier("Bean1")
 	@Autowired
-	@Qualifier("Bean3")
-	public FilterFilm  filtro;
+	public CinemaPersitence cps;
+	public FilterFilm filtro;
 	public CinemaFunction cf;
 	public Cinema cine;
 
@@ -65,21 +61,18 @@ public class CinemaServices {
 		return cine;
 	}
 
-	public  List<Movie> showFilter(String cine, String date,String filtroes) {
-		
-		if(filtro.getClass().getName().equals("Filteredbygender")) {
-			return filtro.filtreType(cine, date, filtroes,cps);
-			
+	public List<Movie> showFilter(String cine, String date, String filtroes) {
+
+		if (filtro.getClass().getName().equals("Filteredbygender")) {
+			return filtro.filtreType(cine, date, filtroes, cps);
+
+		} else {
+			return filtro.filtreType(cine, date, filtroes, cps);
 		}
-		else {
-			return filtro.filtreType(cine, date, filtroes,cps);
-		}
-		
-		
+
 	}
-	
-	public void buyTicket(int row, int col, String cinema, String date, String movieName)
-			 {
+
+	public void buyTicket(int row, int col, String cinema, String date, String movieName) {
 		try {
 			cps.buyTicket(row, col, cinema, date, movieName);
 		} catch (CinemaException e) {
@@ -89,10 +82,19 @@ public class CinemaServices {
 
 	}
 
-	public static List<CinemaFunction> getFunctionsbyCinemaAndDate(String cinema, String date) {
+	public List<CinemaFunction> getFunctionsbyCinemaAndDate(String cinema, String date) {
 		return cps.getFunctionsbyCinemaAndDate(cinema, date);
 	}
 
+	public void addFunctionInCinema(String name, CinemaFunction cinemaF) throws CinemaPersistenceException {
+
+		cps.addFunctionInCinema(name, cinemaF);
+	}
+	public void updateCinemaByNameYDate(String name,CinemaFunction cinemaF) throws CinemaPersistenceException{
+		
+		cps.updateCinemaByNameYDate(name, cinemaF);
+		
+	}
 	public CinemaPersitence getCps() {
 		return cps;
 	}
@@ -100,6 +102,5 @@ public class CinemaServices {
 	public void setCps(CinemaPersitence cps) {
 		this.cps = cps;
 	}
-	
 
 }

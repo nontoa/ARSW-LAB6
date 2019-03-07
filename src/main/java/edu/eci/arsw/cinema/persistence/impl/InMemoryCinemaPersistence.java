@@ -13,11 +13,11 @@ import edu.eci.arsw.cinema.entities.Movie;
 import edu.eci.arsw.cinema.repository.CinemaException;
 import edu.eci.arsw.cinema.repository.CinemaPersistenceException;
 import edu.eci.arsw.cinema.repository.CinemaPersitence;
-import edu.eci.arsw.services.CinemaServices;
+import edu.eci.arsw.cinema.services.CinemaServices;
 
 /**
  *
- * @author cristian
+ * @author Andres Florez
  */
 
 @Service("Bean1")
@@ -98,6 +98,50 @@ public class InMemoryCinemaPersistence implements CinemaPersitence{
     @Override
     public Cinema getCinema(String name) throws CinemaPersistenceException {
         return cinemas.get(name);
+    }
+    
+    public void addFunctionInCinema(String name,CinemaFunction cinemaF) throws CinemaPersistenceException{
+    	 if (!cinemas.containsKey(name)){
+             throw new CinemaPersistenceException("The given cinema already exists: "+name);
+         }
+         else{
+        	 cinemas.get(name).getFunctions().add(cinemaF);
+         }   
+    	
+    	
+    	
+    }
+    
+    public void updateCinemaByNameYDate(String name,CinemaFunction cinemaF) throws CinemaPersistenceException {
+    	List<CinemaFunction> efunction = new ArrayList<CinemaFunction>();
+    	boolean flag =false;
+    	 if (!cinemas.containsKey(name)){
+             throw new CinemaPersistenceException("The given cinema already exists: "+name);
+         }
+         else{
+        	 
+        	 List<CinemaFunction> cf =cinemas.get(name).getFunctions();
+        	 
+        	 for(CinemaFunction c:cf) {
+        		 if(c.getDate().equals(cinemaF.getDate()) && c.getMovie().getName().equals(cinemaF.getMovie().getName())) {
+        			 efunction.add(cinemaF);
+        			 flag = true;
+        		 }	
+        		 else {
+        			 efunction.add(c);
+        		 }
+        		 
+        	 }
+         }
+    	 if(!flag) {
+    		 efunction.add(cinemaF); 
+    	 }
+    	 cinemas.get(name).setFunctions(efunction);
+    	 
+    	
+    	
+    	
+    	
     }
     
 
