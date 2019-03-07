@@ -29,6 +29,17 @@ Despues de clonar el archivo para correrlo con:
 Para correrlo usar 
 * mvn clean compile
 * mvn spring-boot:run --> Le va a permitir correr el servicio de spring
+
+
+## Como ejecutar los servicios de rest
+> PUT
+> POST
+> GET
+> DELETE
+NOTA: El servicio debe estar corriendo para ejecutar el programa
+
+* curl -i -X POST -HContent-Type:application/json -HAccept:application/json http://URL_del_recurso -d '{ObjetoJSON}'
+
 ## Autores
 
 * **Andres Giovanne Florez Perez**  ARSW-LAB6 - [andresflorezp](https://github.com/andresflorezp)
