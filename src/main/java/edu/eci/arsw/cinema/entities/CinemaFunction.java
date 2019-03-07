@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.springframework.stereotype.Service;
 
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
 public class CinemaFunction {
 
     private Movie movie;
-    private List<List<Boolean>> seats = new ArrayList<>();
+    private List<List<AtomicBoolean>> seats = new ArrayList<>();
     private String date;
 
     public CinemaFunction() {
@@ -30,21 +31,21 @@ public class CinemaFunction {
         this.movie = movie;
         this.date = date;
         for (int i = 0; i < 7; i++) {
-            List<Boolean> row = new ArrayList<>(Arrays.asList(new Boolean[12]));
-            Collections.fill(row, Boolean.TRUE);
+        	List<AtomicBoolean> row = new ArrayList<>(Arrays.asList(new AtomicBoolean[12]));
+        	Collections.fill(row, new AtomicBoolean(true));
             this.seats.add(row);
         }
     }
 
     public void buyTicket(int row, int col) throws CinemaException {
         if (seats.get(row).get(col).equals(true)) {
-            seats.get(row).set(col, Boolean.FALSE);
+            seats.get(row).set(col, new AtomicBoolean(false));
         } else {
             throw new CinemaException("Seat booked");
         }
     }
 
-    public List<List<Boolean>> getSeats() {
+    public List<List<AtomicBoolean>> getSeats() {
         return this.seats;
     }
 

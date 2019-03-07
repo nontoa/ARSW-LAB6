@@ -1,0 +1,12 @@
+Parte 3
+
+1)Que condiciones de carrera se podrian presentar
+R:La condicion de carrera se presenta al momento de actualizar los datos el numero de asientos,nombre de la pelicula,
+o fecha.
+
+2)Cuales son las respectivas regiones críticas?
+La respectiva seccion critica se da cuando se intenta comprar un tiquete en este momento se debe sinchronizar la
+lista de asientos.
+
+En terminos generales el que hace y afecta el thread-safety es el PUT.
+

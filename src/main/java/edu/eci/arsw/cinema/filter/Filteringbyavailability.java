@@ -2,6 +2,7 @@ package edu.eci.arsw.cinema.filter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.springframework.stereotype.Service;
 
@@ -25,11 +26,11 @@ public class Filteringbyavailability implements FilterFilm {
 			List<CinemaFunction> functions = cineD.getFunctions();
 			for (CinemaFunction cf : functions) {
 				if (cf.getDate().equals(date)) {
-					List<List<Boolean>> seat = cf.getSeats();
+					List<List<AtomicBoolean>> seat = cf.getSeats();
 					cnt=0;
-					for(List<Boolean> se:seat) {
-						for(Boolean bl:se) {
-							if(bl==false) {
+					for(List<AtomicBoolean> se:seat) {
+						for(AtomicBoolean bl:se) {
+							if(bl.equals(new AtomicBoolean(false))) {
 								cnt++;
 							}
 						}
